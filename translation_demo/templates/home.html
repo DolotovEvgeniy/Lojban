@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Translate sentence from Lojban into English</h2>
+    <form method="post" action="{{ url_for('translate') }}">
+        <label>
+            Lojban text
+            <br>
+            <textarea name="text" rows="5" cols="45"></textarea>
+        </label>
+        <br>
+        <input type="submit" value="Translate">
+    </form>
+    <br>
+    <h2>Translation</h2>
+    <p><font size="4"> {{ translation }}</font></p>
+    <br>
+    <h2>Validation examples</h2>
+    <table>
+    <tbody>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.lojban }}</td>
+            <td>{{ entry.english }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
